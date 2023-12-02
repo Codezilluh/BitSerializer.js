@@ -2,12 +2,16 @@
 
 JavaScript implementation of [C++ BitSerializer](https://github.com/Codezilluh/BitSerializer).
 
+## Install
+
+Install with `npm i github:Codezilluh/BitSerializer.js`
+
 ## Example
 
 This is the example from the C++ version, but in TypeScript.
 
 ```ts
-import Serializer from "bitserializer.js"
+import { Serializer } from "bitserializer.js"
 
 ...
 
@@ -39,7 +43,7 @@ function serializePlayers(players: Player[]): Uint8Array {
 	return arr.byteArray;
 }
 
-function deserializePlayer(barr: Serializer) {
+function deserializePlayer(barr: Serializer): Player {
 	let player = new Player();
 
 	// basically the serialization code, but "read" instead of "add"

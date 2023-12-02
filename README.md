@@ -43,7 +43,7 @@ function serializePlayers(players: Player[]): Uint8Array {
 	return arr.byteArray;
 }
 
-function deserializePlayer(barr: Serializer) {
+function deserializePlayer(barr: Serializer): Player {
 	let player = new Player();
 
 	// basically the serialization code, but "read" instead of "add"

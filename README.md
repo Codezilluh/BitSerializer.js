@@ -2,12 +2,16 @@
 
 JavaScript implementation of [C++ BitSerializer](https://github.com/Codezilluh/BitSerializer).
 
+## Install
+
+Install with `npm i github:Codezilluh/BitSerializer.js`
+
 ## Example
 
 This is the example from the C++ version, but in TypeScript.
 
 ```ts
-import Serializer from "bitserializer.js"
+import { Serializer } from "bitserializer.js"
 
 ...
 

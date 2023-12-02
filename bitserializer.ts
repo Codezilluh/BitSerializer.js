@@ -234,6 +234,9 @@ export class Serializer {
 		const sign = this.readBit() ? -1 : 1;
 		const exponent = this.readInt(8);
 		const normalized = this.readUint(23);
+
+		if (exponent == 0 && normalized == 0) return 0;
+
 		const mantissa = normalized / this.FLOAT_32_N_FACTOR + 1;
 
 		return sign * Math.pow(2, exponent) * mantissa;
@@ -247,6 +250,9 @@ export class Serializer {
 		const sign = this.readBit() ? -1 : 1;
 		const exponent = this.readInt(11);
 		const normalized = this.readUint(52);
+
+		if (exponent == 0 && normalized == 0) return 0;
+
 		const mantissa = normalized / this.FLOAT_64_N_FACTOR + 1;
 
 		return sign * Math.pow(2, exponent) * mantissa;

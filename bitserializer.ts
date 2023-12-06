@@ -31,7 +31,7 @@ export class Serializer {
 	private getBitAtPos(value: number, pos: number): boolean {
 		// Limitations of JavaScript require this
 		if (pos >= 32) {
-			return !!((BigInt(value) >> BigInt(pos)) & BigInt(1));
+			return !!((BigInt(Math.floor(value)) >> BigInt(pos)) & BigInt(1));
 		} else {
 			return !!((value >> pos) & 1);
 		}

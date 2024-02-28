@@ -1,20 +1,8 @@
-/**
- * Calculates the largest amount a number can be right-shifted by before reaching 0.
- * Equivalent to `Math.floor(Math.log2(X))`
- */
-const binaryLogInt = (value) => {
-    let result = 0;
-    while (value >> 1) {
-        value >>= 1;
-        result++;
-    }
-    return result;
-};
 export class Serializer {
     decodeFloat(val) {
         val = Math.abs(val);
-        const exponent = binaryLogInt(val);
-        const mantissa = val / Math.pow(2, exponent);
+        const exponent = Math.floor(Math.log2(val));
+        const mantissa = val / Math.pow(2, exponent) - 1;
         return [exponent, mantissa];
     }
     getBitAtPos(value, pos) {
@@ -110,7 +98,7 @@ export class Serializer {
             return this;
         }
         this.addInt(exponent, 8);
-        this.addUint((mantissa - 1) * this.FLOAT_32_N_FACTOR, 23);
+        this.addUint(mantissa * this.FLOAT_32_N_FACTOR, 23);
         return this;
     }
     /**
@@ -128,7 +116,7 @@ export class Serializer {
             return this;
         }
         this.addInt(exponent, 11);
-        this.addUint((mantissa - 1) * this.FLOAT_64_N_FACTOR, 52);
+        this.addUint(mantissa * this.FLOAT_64_N_FACTOR, 52);
         return this;
     }
     /**

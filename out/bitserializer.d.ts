@@ -80,7 +80,6 @@ export declare class Serializer {
      */
     readFloat(): number;
     /**
-     *
      * @returns The next double (64 bits)
      */
     readDouble(): number;
@@ -88,4 +87,8 @@ export declare class Serializer {
      * @returns The next string (doesn't include "\x00")
      */
     readString(): string;
+    /**
+     * Clears the BitSerializer
+     */
+    clear(): void;
 }

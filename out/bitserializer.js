@@ -19,6 +19,7 @@ export class Serializer {
     }
     set byteArray(value) {
         this._byteArray = [...value];
+        this.curBitPos = 0;
     }
     constructor(arr = undefined) {
         this.FLOAT_32_N_FACTOR = 8388608;
@@ -187,7 +188,6 @@ export class Serializer {
         return sign * Math.pow(2, exponent) * mantissa;
     }
     /**
-     *
      * @returns The next double (64 bits)
      */
     readDouble() {
@@ -212,5 +212,12 @@ export class Serializer {
             str += char;
         }
         return str;
+    }
+    /**
+     * Clears the BitSerializer
+     */
+    clear() {
+        this._byteArray = [];
+        this.curBitPos = 0;
     }
 }

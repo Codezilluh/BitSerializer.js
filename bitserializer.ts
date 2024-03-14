@@ -28,6 +28,7 @@ export class Serializer {
 
 	set byteArray(value: Uint8Array) {
 		this._byteArray = [...value];
+		this.curBitPos = 0;
 	}
 
 	constructor(arr: Uint8Array | undefined = undefined) {
@@ -228,7 +229,6 @@ export class Serializer {
 	}
 
 	/**
-	 *
 	 * @returns The next double (64 bits)
 	 */
 	readDouble(): number {
@@ -259,5 +259,13 @@ export class Serializer {
 		}
 
 		return str;
+	}
+
+	/**
+	 * Clears the BitSerializer
+	 */
+	clear() {
+		this._byteArray = [];
+		this.curBitPos = 0;
 	}
 }

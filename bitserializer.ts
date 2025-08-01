@@ -3,6 +3,7 @@ export class Serializer {
 	private FLOAT_64_N_FACTOR = 4503599627370496;
 	private curBitPos = 0;
 	private _byteArray: number[] = [];
+	private floatArr = new Float32Array(1);
 
 	private decodeFloat(val: number): [number, number] {
 		val = Math.abs(val);
@@ -105,6 +106,10 @@ export class Serializer {
 	 * @returns this
 	 */
 	addFloat(val: number): Serializer {
+		// convert the number (val) to a float32 for better accuracy
+		this.floatArr[0] = val;
+		val = this.floatArr[0];
+
 		const [exponent, mantissa] = this.decodeFloat(val);
 
 		this.addBit(val < 0);

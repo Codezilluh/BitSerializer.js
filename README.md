@@ -8,7 +8,7 @@ Install with `npm i github:Codezilluh/BitSerializer.js`
 
 ## Example
 
-This is the example from the C++ version, but in TypeScript.
+This is the same example from the C++ version, but in TypeScript.
 
 ```ts
 import { Serializer } from "bitserializer.js"

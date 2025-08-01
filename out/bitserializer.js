@@ -26,6 +26,7 @@ export class Serializer {
         this.FLOAT_64_N_FACTOR = 4503599627370496;
         this.curBitPos = 0;
         this._byteArray = [];
+        this.floatArr = new Float32Array(1);
         if (arr == undefined)
             return;
         this.byteArray = arr;
@@ -91,6 +92,9 @@ export class Serializer {
      * @returns this
      */
     addFloat(val) {
+        // convert the number (val) to a float32 for better accuracy
+        this.floatArr[0] = val;
+        val = this.floatArr[0];
         const [exponent, mantissa] = this.decodeFloat(val);
         this.addBit(val < 0);
         if (val == 0) {

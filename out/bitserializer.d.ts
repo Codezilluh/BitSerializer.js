@@ -3,6 +3,7 @@ export declare class Serializer {
     private FLOAT_64_N_FACTOR;
     private curBitPos;
     private _byteArray;
+    private floatArr;
     private decodeFloat;
     private getBitAtPos;
     get byteArray(): Uint8Array;
